@@ -1,2 +1,6 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:regular,700);
+* {
+    font-family: 'News Cycle', sans-serif;
+}
