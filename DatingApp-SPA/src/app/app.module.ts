@@ -12,7 +12,7 @@ import { ErrorInterceptor } from './_services/error.interceptor';
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule],
-  providers: [AuthService, ErrorInterceptor],
+  providers: [ErrorInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
