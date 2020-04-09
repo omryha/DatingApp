@@ -4,10 +4,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ErrorInterceptor, ErrorInterceptorProvider } from './_services/error.interceptor';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent],
