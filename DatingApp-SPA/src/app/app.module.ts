@@ -19,6 +19,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { appRoutes } from './routes';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { AlertifyService } from './_services/alertify.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { UserService } from './_services/user.service';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { AuthService } from './_services/auth.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,7 +57,14 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [ErrorInterceptorProvider],
+  providers: [
+    AuthService,
+    ErrorInterceptorProvider,
+    AlertifyService,
+    AuthGuard,
+    UserService,
+    MemberDetailResolver
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
