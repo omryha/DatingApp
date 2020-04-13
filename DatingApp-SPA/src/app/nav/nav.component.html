@@ -15,10 +15,11 @@
 
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
             <span class="mr-1"></span>
-            <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{authService.decodedToken?.unique_name | titlecase }}</a>
+            <a class="dropdown-toggle text-light" dropdownToggle>Welcome
+                {{authService.decodedToken?.unique_name | titlecase }}</a>
 
             <div class="dropdown-menu mt-3" *dropdownMenu>
-                <a class="dropdown-item"><i class="fa fa-user"></i> Edit Profile</a>
+                <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Edit Profile</a>
                 <div class="dropdown-item"></div>
                 <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
             </div>
@@ -28,8 +29,8 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username" required [(ngModel)]="model.username" />
             <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password" required [(ngModel)]="model.password" />
             <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">
-          Login
-        </button>
+                Login
+            </button>
         </form>
     </div>
 </nav>
