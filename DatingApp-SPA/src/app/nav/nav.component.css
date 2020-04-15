@@ -1,8 +1,16 @@
-.dropdown-toggle, .dropdown-item, .nav-link {
+.dropdown-toggle,
+.dropdown-item,
+.nav-link {
     cursor: pointer;
 }
 
 .dropdown-item:hover {
     background-color: #E95420;
     color: white;
+}
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
 }
