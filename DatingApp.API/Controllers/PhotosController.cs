@@ -96,7 +96,7 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("{id}/setMain")]
-        public async Task<IActionResult> SetMainPhoto(int userId, int id)
+        public async Task<IActionResult> SetMain(int userId, int id)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
@@ -112,7 +112,6 @@ namespace DatingApp.API.Controllers
                 return BadRequest("This is already the main photo");
 
             var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
-
             currentMainPhoto.IsMain = false;
 
             photoFromRepo.IsMain = true;
