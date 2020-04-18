@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MemberEditComponent implements OnInit {
   user: User;
   photoUrl: string;
+  live: boolean = true;
 
   @ViewChild('editForm', { static: true }) editForm: NgForm;
   // Alert a warning when closing the browser tab while editing
