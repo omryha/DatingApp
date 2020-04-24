@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Helpers
 {
-    public class PagedList<T>: List<T>
+    public class PagedList<T> : List<T>
     {
         public int CurrentPage { get; set; }
-        public int TotalPages { get; set; } 
+        public int TotalPages { get; set; }
         public int PageSize { get; set; }
         public int TotalCount { get; set; }
 
-        public PagedList(List<T> items, int count, int pageNumber, int pageSize)        
+        public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {
             TotalCount = count;
             PageSize = pageSize;
@@ -29,6 +29,5 @@ namespace DatingApp.API.Helpers
             var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
             return new PagedList<T>(items, count, pageNumber, pageSize);
         }
-        
     }
 }
