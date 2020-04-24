@@ -1,4 +1,8 @@
-import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
 import { NgModule, Pipe } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
@@ -41,7 +46,7 @@ export function tokenGetter() {
 export class CustomHammerConfig extends HammerGestureConfig {
   overrides = {
     pinch: { enable: false },
-    rotate: { enable: false }
+    rotate: { enable: false },
   };
 }
 
@@ -57,7 +62,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +71,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     FormsModule,
     ReactiveFormsModule,
     NgxGalleryModule,
+    PaginationModule.forRoot(),
     FileUploadModule,
     TimeagoModule.forRoot(),
     TabsModule.forRoot(),
@@ -76,9 +82,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:5000'],
-        blacklistedRoutes: ['localhost:5000/api/auth']
-      }
-    })
+        blacklistedRoutes: ['localhost:5000/api/auth'],
+      },
+    }),
   ],
   providers: [
     AuthService,
@@ -91,9 +97,10 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberEditResolver,
     MemberListResolver,
     {
-      provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig
-    }
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: CustomHammerConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
