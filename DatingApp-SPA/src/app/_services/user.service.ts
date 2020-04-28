@@ -37,12 +37,12 @@ export class UserService {
       params = params.append('orderBy', userParams.orderBy);
     }
 
-    if (likesParam === 'Likes') {
-      params = params.append('likers', 'true');
+    if (likesParam === 'Likers') {
+      params = params.append('Likers', 'true');
     }
 
     if (likesParam === 'Likees') {
-      params = params.append('likees', 'true');
+      params = params.append('Likees', 'true');
     }
 
     return this.http
