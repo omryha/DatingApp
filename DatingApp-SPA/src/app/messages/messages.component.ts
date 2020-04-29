@@ -15,6 +15,7 @@ export class MessagesComponent implements OnInit {
   messages: Message[];
   pagination: Pagination;
   messageContainer = 'Unread';
+  live: boolean = false;
 
   constructor(
     private userService: UserService,

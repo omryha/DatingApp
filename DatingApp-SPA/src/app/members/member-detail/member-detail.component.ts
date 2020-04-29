@@ -3,27 +3,31 @@ import { User } from 'src/app/_models/user';
 import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
+import {
+  NgxGalleryOptions,
+  NgxGalleryImage,
+  NgxGalleryAnimation,
+} from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.css']
+  styleUrls: ['./member-detail.component.css'],
 })
 export class MemberDetailComponent implements OnInit {
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  live: boolean = true;
+  live: boolean = false;
 
   constructor(
     private userService: UserService,
     private alertify: AlertifyService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
+    this.route.data.subscribe((data) => {
       this.user = data['user'];
     });
 
@@ -34,8 +38,8 @@ export class MemberDetailComponent implements OnInit {
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
-        preview: false
-      }
+        preview: false,
+      },
     ];
     this.galleryImages = this.getImages();
   }
@@ -47,7 +51,7 @@ export class MemberDetailComponent implements OnInit {
         small: photo.url,
         medium: photo.url,
         big: photo.url,
-        description: photo.description
+        description: photo.description,
       });
     }
     return imageUrls;
@@ -58,5 +62,4 @@ export class MemberDetailComponent implements OnInit {
         this.user = user;
       }, error => this.alertify.error(error));
     } */
-
 }
