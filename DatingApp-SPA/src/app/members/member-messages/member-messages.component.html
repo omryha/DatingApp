@@ -9,14 +9,14 @@
                 <!-- to theme -->
                 <div *ngIf="message.senderId==recipientId">
                     <span class="chat-image float-left">
-            <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle" />
-          </span>
+                        <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle" />
+                    </span>
                     <div class="chat-body">
                         <div class="header">
                             <strong class="primary-font">{{message.senderKnownAs}}</strong>
                             <small class="text-muted float-right">
-                <span class="fa fa-clock-o">{{message.messageSent | timeago: live}}</span>
-              </small>
+                                <span class="fa fa-clock-o">{{message.messageSent | timeago: live}}</span>
+                            </small>
                         </div>
                         <p>
                             {{message.content}}
@@ -26,15 +26,16 @@
                 <!-- to me -->
                 <div *ngIf="message.senderId!=recipientId">
                     <span class="chat-image float-right">
-            <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle" />
-          </span>
+                        <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle" />
+                    </span>
                     <div class="chat-body">
                         <div class="header">
                             <small class="text-muted">
-                <span class="fa fa-clock-o">{{message.messageSent | timeago: live}}</span>
-                <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
-                <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead | timeago:live}})</span>
-              </small>
+                                <span class="fa fa-clock-o">{{message.messageSent | timeago: live}}</span>
+                                <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
+                                <span *ngIf="message.isRead" class="text-success">(Read
+                                    {{message.dateRead | timeago:live}})</span>
+                            </small>
                             <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
 
                         </div>
@@ -47,11 +48,11 @@
         </ul>
     </div>
     <div class="card-footer">
-        <form action="">
+        <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage()">
             <div class="input-group">
-                <input type="text" class="form-control input-sm" placeholder="Send a message">
+                <input type="text" name="content" [(ngModel)]="newMessage.content" class="form-control input-sm" required placeholder="Send a message">
                 <div class="input-group-append">
-                    <button class="btn btn-primary">Send</button>
+                    <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
                 </div>
             </div>
         </form>
